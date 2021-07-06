@@ -102,3 +102,9 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/configs/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
 source $HOME/configs/zsh-history-substring-search/zsh-history-substring-search.zsh
 source $HOME/configs/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+eval $(thefuck --alias)
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
