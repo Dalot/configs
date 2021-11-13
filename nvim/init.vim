@@ -10,6 +10,7 @@
 
 call plug#begin()
 
+Plug 'fatih/vim-go'
 Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
 Plug 'https://github.com/preservim/nerdtree' " NerdTree
 Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
@@ -22,21 +23,55 @@ Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
 Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
 Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
 Plug 'https://github.com/neoclide/coc.nvim'  " Auto Completion
-
+Plug 'voldikss/vim-floaterm'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug '907th/vim-auto-save'
 
 set encoding=UTF-8
 
 call plug#end()
 
+" Prettier on save
+autocmd BufWritePre *.js,*.ts,*.tsx,*.vue CocCommand prettier.formatFile
+
 nnoremap <C-e> :NERDTreeFocus<CR>
 nnoremap <C-b> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <M-f> :FZF<CR>
+
 
 let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
+autocmd VimEnter * NERDTree
 
 nmap <F8> :TagbarToggle<CR>
 
 :set completeopt-=preview " For No Previews
 
 :colorscheme jellybeans
+
+" Floaterm
+nnoremap <M-ç> :FloatermNew<CR><C-\><C-n>
+nnoremap <M-h> :FloatermHide<CR>
+nnoremap <M-k> :FloatermKill<CR>
+nnoremap <M-left> :FloatermPrev<CR><C-\><C-n>
+nnoremap <M-right> :FloatermNext<CR><C-\><C-n>
+
+nnoremap <C-p> <C-^>
+
+" air-line
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" airline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
