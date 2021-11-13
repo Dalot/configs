@@ -1,7 +1,6 @@
 #### Must have ####
 docker
 docker-compose
-kubectl-bin
 git
 htop
 jq
@@ -13,13 +12,9 @@ mlocate
 net-tools
 thefuck
 tig
-unrar
 wget
-which
 whois
 p7zip
-z
-the_silver_searcher
 nodejs
 npm
 exuberant-ctags
@@ -27,7 +22,6 @@ exuberant-ctags
 # GUI
 code
 gparted
-google-chrome
 qbittorrent
 terminator
 vlc
