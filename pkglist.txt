@@ -20,6 +20,9 @@ whois
 p7zip
 z
 the_silver_searcher
+nodejs
+npm
+exuberant-ctags
 
 # GUI
 code
