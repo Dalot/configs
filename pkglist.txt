@@ -18,6 +18,7 @@ p7zip
 nodejs
 npm
 exuberant-ctags
+silversearcher-ag
 
 # GUI
 code
