@@ -10,8 +10,8 @@
 
 call plug#begin()
 
-Plug 'fatih/vim-go'
-Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
+Plug 'https://github.com/fatih/vim-go'
+Plug 'https://github.com/tpope/vim-surround' " Surrounding ysw)
 Plug 'https://github.com/preservim/nerdtree' " NerdTree
 Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
 Plug 'https://github.com/vim-airline/vim-airline' " Status bar
@@ -19,14 +19,17 @@ Plug 'https://github.com/lifepillar/pgsql.vim' " PSQL Pluging needs :SQLSetType 
 Plug 'https://github.com/ap/vim-css-color' " CSS Color Preview
 Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
 Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
-Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
+Plug 'https://github.com/mg979/vim-visual-multi' " CTRL + N for multiple cursors
 Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
 Plug 'https://github.com/neoclide/coc.nvim'  " Auto Completion
-Plug 'voldikss/vim-floaterm'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug '907th/vim-auto-save'
-Plug 'projekt0n/github-nvim-theme'
+Plug 'https://github.com/voldikss/vim-floaterm'
+Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'https://github.com/junegunn/fzf.vim'
+Plug 'https://github.com/907th/vim-auto-save'
+Plug 'https://github.com/projekt0n/github-nvim-theme'
+Plug 'https://github.com/tversteeg/registers.nvim', { 'branch': 'main' }
+Plug 'https://github.com/kosayoda/nvim-lightbulb'
+Plug 'https://github.com/folke/todo-comments.nvim'
 
 set encoding=UTF-8
 
@@ -76,3 +79,18 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
