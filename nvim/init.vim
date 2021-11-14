@@ -7,6 +7,9 @@
 :set smarttab " When on, a <Tab> in front of a line inserts blanks according to 'shiftwidth'.  'tabstop' or 'softtabstop' is used in other places.
 :set softtabstop=4
 :set mouse=a " Enable the use of the mouse in all modes
+" Turn backup off, since most stuff is in SVN, git et.c anyway...
+set nobackup
+set lazyredraw
 
 call plug#begin()
 
@@ -29,11 +32,44 @@ Plug 'https://github.com/907th/vim-auto-save'
 Plug 'https://github.com/projekt0n/github-nvim-theme'
 Plug 'https://github.com/tversteeg/registers.nvim', { 'branch': 'main' }
 Plug 'https://github.com/kosayoda/nvim-lightbulb'
+Plug 'https://github.com/tpope/vim-fugitive'
+
 Plug 'https://github.com/folke/todo-comments.nvim'
+Plug 'https://github.com/nvim-lua/plenary.nvim'
+
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'https://github.com/folke/trouble.nvim'
 
 set encoding=UTF-8
 
 call plug#end()
+
+let mapleader = ","
+
+" todo-comments
+lua << EOF
+  require("todo-comments").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  }
+EOF
+
+" folke/trouble
+nnoremap <leader>xx <cmd>TroubleToggle<cr>
+nnoremap <leader>xx <cmd>TroubleToggle<cr>
+nnoremap <leader>xw <cmd>TroubleToggle lsp_workspace_diagnostics<cr>
+nnoremap <leader>xd <cmd>TroubleToggle lsp_document_diagnostics<cr>
+nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
+nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
+nnoremap gR <cmd>TroubleToggle lsp_references<cr>
+lua << EOF
+  require("trouble").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  }
+EOF
 
 " Prettier on save
 autocmd BufWritePre *.js,*.ts,*.tsx,*.vue CocCommand prettier.formatFile
