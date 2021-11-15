@@ -45,10 +45,6 @@ set encoding=UTF-8
 
 call plug#end()
 
-let mapleader = ","
-inoremap <leader>o <End>
-inoremap <leader>a <Home>
-
 " project.nvim
 lua << EOF
   require("project_nvim").setup {
@@ -83,21 +79,29 @@ lua << EOF
   }
 EOF
 
-" Prettier on save
-autocmd BufWritePre *.js,*.ts,*.tsx,*.vue CocCommand prettier.formatFile
-
-nnoremap <C-e> :NERDTreeCWD<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <M-f> :FZF<CR>
-
-let g:NERDTreeDirArrowCollapsible="~"
-autocmd VimEnter * NERDTree
-
-nmap <F8> :TagbarToggle<CR>
-
+" Personal config
 set background=dark
 set termguicolors     " enable true colors support
 colorscheme github_dark_default
+let mapleader = ","
+inoremap <leader>o <End>
+inoremap <leader>a <Home>
+nnoremap <C-p> :bprevious<CR>
+nnoremap <M-p> :bnext<CR>
+nnoremap <M-w> :bdelete<CR>
+
+" Prettier on save
+autocmd BufWritePre *.js,*.ts,*.tsx,*.vue CocCommand prettier.formatFile
+nnoremap <M-f> :FZF<CR>
+
+" NERDTree
+let g:NERDTreeDirArrowCollapsible="~"
+nnoremap <C-e> :NERDTreeCWD<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+autocmd VimEnter * NERDTree
+
+" Tagbar
+nmap <F8> :TagbarToggle<CR>
 
 " Floaterm
 nnoremap <M-ç> :FloatermNew<CR><C-\><C-n>
@@ -106,15 +110,10 @@ nnoremap <M-k> :FloatermKill<CR>
 nnoremap <M-left> :FloatermPrev<CR><C-\><C-n>
 nnoremap <M-right> :FloatermNext<CR><C-\><C-n>
 
-nnoremap <C-p> :bprevious<CR>
-nnoremap <M-p> :bnext<CR>
-nnoremap <M-w> :bdelete<CR>
 
 " air-line
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-
-
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
