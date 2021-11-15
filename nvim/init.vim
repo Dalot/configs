@@ -33,6 +33,7 @@ Plug 'https://github.com/projekt0n/github-nvim-theme'
 Plug 'https://github.com/tversteeg/registers.nvim', { 'branch': 'main' }
 Plug 'https://github.com/kosayoda/nvim-lightbulb'
 Plug 'https://github.com/tpope/vim-fugitive'
+Plug 'https://github.com/ahmedkhalf/project.nvim'
 
 Plug 'https://github.com/folke/todo-comments.nvim'
 Plug 'https://github.com/nvim-lua/plenary.nvim'
@@ -45,6 +46,17 @@ set encoding=UTF-8
 call plug#end()
 
 let mapleader = ","
+inoremap <leader>o <End>
+inoremap <leader>a <Home>
+
+" project.nvim
+lua << EOF
+  require("project_nvim").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  }
+EOF
 
 " todo-comments
 lua << EOF
@@ -74,7 +86,7 @@ EOF
 " Prettier on save
 autocmd BufWritePre *.js,*.ts,*.tsx,*.vue CocCommand prettier.formatFile
 
-nnoremap <C-e> :NERDTreeFocus<CR>
+nnoremap <C-e> :NERDTreeCWD<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <M-f> :FZF<CR>
 
