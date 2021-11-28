@@ -1,0 +1,7 @@
+{
+  "languageserver": {},
+  "go.goplsOptions": {
+    "buildFlags": ["-tags=integration"]
+  },
+  "coc.preferences.formatOnSaveFiletypes": ["dart", "json"]
+}
