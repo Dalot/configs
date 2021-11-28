@@ -19,12 +19,12 @@ nodejs
 npm
 exuberant-ctags
 silversearcher-ag
+tmux
 
 # GUI
 code
 gparted
 qbittorrent
-terminator
 vlc
 
 #### Optional ####
