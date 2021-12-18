@@ -3,5 +3,5 @@
   "go.goplsOptions": {
     "buildFlags": ["-tags=integration"]
   },
-  "coc.preferences.formatOnSaveFiletypes": ["dart", "json"]
+  "coc.preferences.formatOnSaveFiletypes": ["dart", "json", "rust"]
 }

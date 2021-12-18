@@ -15,10 +15,10 @@ set smartcase
 set splitbelow
 set splitright
 
+set encoding=UTF-8
 call plug#begin()
-
+Plug 'jparise/vim-graphql'
 Plug 'https://github.com/fatih/vim-go'
-Plug 'https://github.com/jparise/vim-graphql'
 Plug 'https://github.com/tpope/vim-surround' " Surrounding ysw)
 Plug 'https://github.com/preservim/nerdtree' " NerdTree
 Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
@@ -27,27 +27,18 @@ Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
 Plug 'https://github.com/mg979/vim-visual-multi' " CTRL + N for multiple cursors
 Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
 Plug 'https://github.com/neoclide/coc.nvim'  " Auto Completion
-Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'https://github.com/junegunn/fzf.vim'
-Plug 'https://github.com/907th/vim-auto-save'
 Plug 'https://github.com/projekt0n/github-nvim-theme'
 Plug 'https://github.com/tversteeg/registers.nvim', { 'branch': 'main' }
 Plug 'https://github.com/tpope/vim-fugitive'
 Plug 'https://github.com/pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main' }
-
-Plug 'https://github.com/nvim-lua/plenary.nvim'
-
+Plug 'https://github.com/nvim-lua/plenary.nvim' " boilerplate lua functions that are commonly used. It's used by at least telescope
+Plug 'https://github.com/nvim-telescope/telescope.nvim'
 " These come together
 Plug 'https://github.com/kyazdani42/nvim-web-devicons'
 Plug 'https://github.com/folke/trouble.nvim'
 " These come together
 
-set encoding=UTF-8
-
 call plug#end()
-
-" tversteeg/registers
-"let g:registers_return_symbol = "\n" "'⏎' by default
 
 " Fugitive Conflict Resolution
 nnoremap <leader>gv :Gvdiff<CR>
@@ -85,18 +76,22 @@ lua << EOF
 EOF
 
 " Personal config
-"let g:auto_save = 1  " enable AutoSave on Vim startup
+let mapleader = ","
+nmap <leader>a  <Plug>(coc-codeaction-selected)<CR>
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 nnoremap <Leader>w :w<CR>
+let g:coc_disable_transparent_cursor = 1
 set clipboard=unnamedplus
 set background=dark
 set termguicolors     " enable true colors support
 colorscheme github_dark_default
-let mapleader = ","
 inoremap <leader>o <End>
 inoremap <leader>a <Home>
 inoremap <C-c> <Esc>
-nnoremap <C-p> :bprevious<CR>
-nnoremap <M-p> :bnext<CR>
+nnoremap <M-left> :bprevious<CR>
+nnoremap <M-h> :bprevious<CR>
+nnoremap <M-right> :bnext<CR>
+nnoremap <M-l> :bnext<CR>
 nnoremap <M-w> :bdelete<CR>
 nnoremap <M-ç> :split<CR>:term<CR>i
 tnoremap <Esc> <C-\><C-n>
@@ -133,10 +128,6 @@ tnoremap <C-left> <C-\><C-n><C-w>h
 nnoremap _ <C-w>_
 nnoremap - <C-w>=
 
-" Prettier on save
-"autocmd BufWritePre *.js,*.ts,*.tsx,*.vue CocCommand prettier.formatFile
-nnoremap <M-f> :FZF<CR>
-
 " NERDTree
 let NERDTreeShowHidden=1
 let g:NERDTreeDirArrowCollapsible="~"
@@ -150,6 +141,8 @@ nmap <F8> :TagbarToggle<CR>
 
 " air-line
 let g:airline_powerline_fonts = 1
+" Prettier on save
+"autocmd BufWritePre *.js,*.ts,*.tsx,*.vue CocCommand prettier.formatFile
 let g:airline#extensions#tabline#enabled = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -163,6 +156,7 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
+
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -188,11 +182,24 @@ augroup END
 
 
 " Rust
-let g:rustfmt_autosave = 1
 augroup filetype-rust
 	autocmd!
 	autocmd FileType rust nmap <Leader>gd :CocCommand rust-analyzer.openDocs<CR>
     autocmd FileType rust nmap <Leader>s :call CocAction('doHover')<CR>
-
-
 augroup END
+
+" Find files using Telescope command-line sugar.
+nnoremap <M-f> <cmd>Telescope find_files<cr>
+nnoremap <leader>ag <cmd>Telescope live_grep<cr>
+nnoremap <C-p> <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" notify
+lua << EOF
+  require("notify").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  }
+EOF
+
