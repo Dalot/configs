@@ -2,10 +2,11 @@ set number
 set relativenumber
 set noswapfile
 set autoindent
-set tabstop=4
+set tabstop=8
 set shiftwidth=4
 set smarttab " When on, a <Tab> in front of a line inserts blanks according to 'shiftwidth'.  'tabstop' or 'softtabstop' is used in other places.
-set softtabstop=4
+set softtabstop=0
+set expandtab
 set mouse=a " Enable the use of the mouse in all modes
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
@@ -17,8 +18,9 @@ set splitright
 
 set encoding=UTF-8
 call plug#begin()
-Plug 'jparise/vim-graphql'
-Plug 'https://github.com/fatih/vim-go'
+
+" Plug 'jparise/vim-graphql'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'https://github.com/tpope/vim-surround' " Surrounding ysw)
 Plug 'https://github.com/preservim/nerdtree' " NerdTree
 Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
@@ -59,6 +61,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+
 " folke/trouble
 nnoremap <leader>xx <cmd>TroubleToggle<cr>
 nnoremap <leader>xx <cmd>TroubleToggle<cr>
@@ -78,6 +81,8 @@ EOF
 " Personal config
 let mapleader = ","
 nmap <leader>a  <Plug>(coc-codeaction-selected)<CR>
+nmap <leader>e :call CocAction('diagnosticNext')<CR>
+nmap <Leader>s :call CocAction('doHover')<CR>
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 nnoremap <Leader>w :w<CR>
 let g:coc_disable_transparent_cursor = 1
@@ -173,11 +178,20 @@ function! s:check_back_space() abort
 endfunction
 
 " Go Golang
+let g:go_highlight_structs = 1 
+let g:go_highlight_methods = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_array_whitespace_error = 1
+let g:go_highlight_chan_whitespace_error = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_space_tab_error = 1
+let g:go_highlight_trailing_whitespace_error = 1
+let g:go_highlight_build_constraints = 1
 augroup filetype-go
-	autocmd!
-	let g:go_build_tags = 'integration'
-	autocmd FileType go nmap <Leader>gd <Plug>(go-doc)
-    autocmd FileType go nmap <Leader>s :call CocAction('doHover')<CR>
+    autocmd!
+    let g:go_build_tags = 'integration'
+    autocmd FileType go nmap <Leader>gd <Plug>(go-doc)
 augroup END
 
 
@@ -185,7 +199,6 @@ augroup END
 augroup filetype-rust
 	autocmd!
 	autocmd FileType rust nmap <Leader>gd :CocCommand rust-analyzer.openDocs<CR>
-    autocmd FileType rust nmap <Leader>s :call CocAction('doHover')<CR>
 augroup END
 
 " Find files using Telescope command-line sugar.
@@ -193,13 +206,3 @@ nnoremap <M-f> <cmd>Telescope find_files<cr>
 nnoremap <leader>ag <cmd>Telescope live_grep<cr>
 nnoremap <C-p> <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
-" notify
-lua << EOF
-  require("notify").setup {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-  }
-EOF
-
