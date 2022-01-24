@@ -17,3 +17,9 @@ Copy nvim from this repo to the home of the nvim config, which can be `~/.config
 
 ### If you have any errors related to coc.nvim
 You probably need to go to the directory inside `plugged` and run `npm install` and/or `yarn build`  
+
+### CoC
+#### rust-analyzer
+`rustup update`
+`rustup component add rust-src`
+`CocInstall coc-rust-analyzer`
