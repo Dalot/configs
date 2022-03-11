@@ -16,7 +16,7 @@ https://ohmyz.sh/#install
 `chsh -s $(which zsh)`
 
 ### Install 'mandatory' oh-my-zsh plygins
-`chmod +x clone-all-repos.sh && ./clone-all-repos.sh
+`chmod +x clone-all-repos.sh && ./clone-all-repos.sh`
 
 ### Install neovim
 `https://github.com/neovim/neovim/wiki/Installing-Neovim#linux`
