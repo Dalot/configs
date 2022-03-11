@@ -1,46 +1,15 @@
 #### Must have ####
-docker
-docker-compose
 git
 htop
 jq
 make
 mc
-neovim
-#Search files
-mlocate
-net-tools
 thefuck
-tig
 wget
 whois
-p7zip
-nodejs
-npm
-exuberant-ctags
-silversearcher-ag
 tmux
-
-# GUI
-code
-gparted
-qbittorrent
-vlc
-
-#### Optional ####
-#cape allows you to use a modifier key as another key when pressed and released on its own. 
-#Note that it is slightly slower than pressing the original key, 
-#because the pressed event does not occur until the key is released. 
-#The default behaviour is to generate the Escape key when Left Control is pressed and released on its own.
-#xcape
-
-#Because CAPSLOCK is just "right there" and making it CTRL when key-chording 
-#and ESC when pressed alone is quite handy, specially in vi.
-#caps2esc
-
-#glances
-#helm
-#python-pip
-#python-virtualenvwrapper
-#terraform-lsp-git
-#pulseaudio-modules-bt
+curl
+zsh
+python3-dev 
+python3-pip
+python3-setuptools

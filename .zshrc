@@ -2,8 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/rogeriodalot/.oh-my-zsh"
-export GOPRIVATE="github.com/hatch-studio"
+export ZSH="/home/wec/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -72,11 +71,8 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -f -g ""'
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode)
+plugins=(git z zsh-syntax-highlighting zsh-autosuggestions zsh-history-substring-search)
 
-source $HOME/configs/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
-source $HOME/configs/zsh-history-substring-search/zsh-history-substring-search.zsh
-source $HOME/configs/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -104,18 +100,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias cdh="cd ~/Hatch"
-alias catalog="cd ~/Hatch/catalog-service/ && nvim"
-alias device="cd ~/Hatch/device-service/ && nvim"
-alias cloud="cd ~/Hatch/cloud/ && nvim"
-alias presentation="cd ~/Hatch/presentation-service/ && nvim"
-alias showroom="cd ~/Hatch/showroom-service/ && nvim"
-alias integration="cd ~/Hatch/integration-scripts/ && nvim"
-alias customer="cd ~/Hatch/customer-service/ && nvim"
-alias registry="cd ~/Hatch/registry-service/ && nvim"
-alias review="cd ~/Hatch/review-service/ && nvim"
-alias user="cd ~/Hatch/user-service/ && nvim"
-alias launch="cd ~/Hatch/launch-service/ && nvim"
 
 eval $(thefuck --alias)
 
@@ -123,23 +107,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export PATH="$PATH:$HOME/go/bin:/usr/local/go/bin:$HOME/kind"
-export PATH="$PATH:$HOME/.tfenv/bin"
-export PATH="$PATH:$HOME/.local/share/solana/install/active_release/bin:"
-export WORKON_HOME=$HOME/Envs
-export VIRTUALENVWRAPPER_PYTHON='/usr/bin/python3.8'
-source ~/.local/bin/virtualenvwrapper.sh
-
-# This speeds up pasting w/ autosuggest
-# https://github.com/zsh-users/zsh-autosuggestions/issues/238
-pasteinit() {
-  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
-  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
-}
-
-pastefinish() {
-  zle -N self-insert $OLD_SELF_INSERT
-}
-zstyle :bracketed-paste-magic paste-init pasteinit
-zstyle :bracketed-paste-magic paste-finish pastefinish
-
+export PATH="$PATH:$HOME/go/bin:/usr/local/go/bin"
