@@ -1,3 +1,4 @@
+set pyxversion=3
 set number
 set relativenumber
 set noswapfile
@@ -24,7 +25,12 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'https://github.com/tpope/vim-surround' " Surrounding ysw)
 Plug 'https://github.com/preservim/nerdtree' " NerdTree
 Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
-Plug 'https://github.com/vim-airline/vim-airline' " Status bar
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'buoto/gotests-vim'
+
 Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
 Plug 'https://github.com/mg979/vim-visual-multi' " CTRL + N for multiple cursors
 Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
@@ -78,6 +84,15 @@ lua << EOF
   }
 EOF
 
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "all",     
+  highlight = {
+    enable = true              
+  },
+}
+EOF
+
 " Personal config
 let mapleader = ","
 nmap <leader>a  <Plug>(coc-codeaction-selected)<CR>
@@ -92,6 +107,10 @@ set termguicolors     " enable true colors support
 colorscheme github_dark_default
 inoremap <leader>o <End>
 inoremap <leader>a <Home>
+inoremap <leader>7 {
+inoremap <leader>0 }
+inoremap <leader>8 [
+inoremap <leader>9 ]
 inoremap <C-c> <Esc>
 nnoremap <M-left> :bprevious<CR>
 nnoremap <M-h> :bprevious<CR>
@@ -146,8 +165,6 @@ nmap <F8> :TagbarToggle<CR>
 
 " air-line
 let g:airline_powerline_fonts = 1
-" Prettier on save
-"autocmd BufWritePre *.js,*.ts,*.tsx,*.vue CocCommand prettier.formatFile
 let g:airline#extensions#tabline#enabled = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -178,16 +195,17 @@ function! s:check_back_space() abort
 endfunction
 
 " Go Golang
-let g:go_highlight_structs = 1 
-let g:go_highlight_methods = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_array_whitespace_error = 1
-let g:go_highlight_chan_whitespace_error = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_space_tab_error = 1
-let g:go_highlight_trailing_whitespace_error = 1
-let g:go_highlight_build_constraints = 1
+"let g:gotests_bin = '~/go/bin/gotests'
+" let g:go_highlight_structs = 1 
+" let g:go_highlight_methods = 1
+" let g:go_highlight_functions = 1
+" let g:go_highlight_operators = 1
+" let g:go_highlight_array_whitespace_error = 1
+" let g:go_highlight_chan_whitespace_error = 1
+" let g:go_highlight_extra_types = 1
+" let g:go_highlight_space_tab_error = 1
+" let g:go_highlight_trailing_whitespace_error = 1
+" let g:go_highlight_build_constraints = 1
 augroup filetype-go
     autocmd!
     let g:go_build_tags = 'integration'
@@ -206,3 +224,4 @@ nnoremap <M-f> <cmd>Telescope find_files<cr>
 nnoremap <leader>ag <cmd>Telescope live_grep<cr>
 nnoremap <C-p> <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
