@@ -44,3 +44,22 @@ Inside nvim
 
 `CocInstall coc-go`
 `CocInstall coc-rust-analyzer`
+
+### Install alacritty
+`sudo add-apt-repository ppa:mmstick76/alacritty`
+`sudo apt update`
+`sudo apt install alacritty`
+
+### Copy the config file
+`cp .alacritty.yml ~/.alacritty.yml`
+
+### Check the priority of the default term
+`sudo update-alternatives --config x-terminal-emulator`
+
+### Install fonts
+`sudo apt-get install fonts-powerline`
+`git clone https://github.com/powerline/fonts.git --depth=1`
+`cd fonts`
+`./install.sh`
+`cd ..`
+`rm -rf fonts`
