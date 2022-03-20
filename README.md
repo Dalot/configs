@@ -63,3 +63,8 @@ Inside nvim
 `./install.sh`
 `cd ..`
 `rm -rf fonts`
+
+### tmux
+`mkdir -p ~/.tmux/plugins/`
+`git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/`
+`cp .tmux.conf ~/`
