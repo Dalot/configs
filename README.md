@@ -68,3 +68,6 @@ Inside nvim
 `mkdir -p ~/.tmux/plugins/`
 `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/`
 `cp .tmux.conf ~/`
+
+`sudo apt install tmuxinator`
+
