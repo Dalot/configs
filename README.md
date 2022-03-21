@@ -71,3 +71,9 @@ Inside nvim
 
 `sudo apt install tmuxinator`
 
+### Gnome
+`sudo add-apt-repository universe`
+`sudo apt install gnome-tweak-tool`
+
+#### Gnome pixel saver extension
+https://github.com/pixel-saver/pixel-saver
