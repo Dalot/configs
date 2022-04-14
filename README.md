@@ -44,6 +44,7 @@ Inside nvim
 
 `CocInstall coc-go`
 `CocInstall coc-rust-analyzer`
+`CocInstall coc-ltex`
 
 ### Install alacritty
 `sudo add-apt-repository ppa:mmstick76/alacritty`
