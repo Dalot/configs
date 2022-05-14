@@ -23,28 +23,13 @@ https://ohmyz.sh/#install
 
 ### Setup the config
 `mkdir ~/.config/nvim/ && cp nvim/init.vim ~/.config/nvim/init.vim`
-
-### Install vim-plug
-https://github.com/junegunn/vim-plug
+`nvim +'hi NormalFloat guibg=#1e222a' +PackerSync`
 
 ### Install Node
 https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04#option-3-installing-node-using-the-node-version-manager
 
-### Open neovim and run 
-`PlugInstall`
-
 ### Install go
 https://go.dev/doc/install
-
-### Install coc
-`cd ~/.local/share/nvim/plugged/coc.nvim/ && npm install`
-
-### CoC
-Inside nvim
-
-`CocInstall coc-go`
-`CocInstall coc-rust-analyzer`
-`CocInstall coc-ltex`
 
 ### Install alacritty
 `sudo add-apt-repository ppa:mmstick76/alacritty`
