@@ -10,8 +10,13 @@ M.ui = {
 }
 
 local userPlugins = require "custom.plugins"
+local pluginConfs = require "custom.plugins.configs"
 
 M.plugins = {
+
+  override = {
+    ["nvim-treesitter/nvim-treesitter"] = pluginConfs.treesitter,
+  },
   options = {
     lspconfig = {
       setup_lspconf = "custom.plugins.lspconfig",

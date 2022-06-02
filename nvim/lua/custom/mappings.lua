@@ -13,6 +13,7 @@ M.custom = {
 
   n = {
     ["<leader>w"] = {":w<CR>", "save file"},
+    ["<C-w>>"] = {":30winc ><CR>", "increase size of vertical split"},
   },
 
   v = {
@@ -20,6 +21,7 @@ M.custom = {
   },
 
 }
+
 
 M.lsp = {
   n = {
@@ -83,21 +85,28 @@ M.lsp = {
   }
 }
 
+-- local find_files = function()
+--   require("telescope.builtin").find_files({})
+-- end
+
 M.telescope = {
    n = {
       -- find
-      ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "  find files" },
+      -- ["<leader>ff"] = {find_files},
+      ["<leader>ff"] = {"<cmd>lua require'telescope.builtin'.find_files({ find_command={'rg', '--files', '--hidden', '-g', '!.git' , '-g', '!vendor'}})  <CR>", "  find files" },
       ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "  find all" },
-      ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "   live grep" },
+      ["<leader>fw"] = { "<cmd> Telescope live_grep glob_pattern=!vendor/* <CR>", "   live grep exclude vendor" },
+      ["<leader>fq"] = { "<cmd> Telescope live_grep <CR>", "   live grep include vendor" },
       ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "  find buffers" },
       ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "  help page" },
       ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "   find oldfiles" },
       ["<leader>tk"] = { "<cmd> Telescope keymaps <CR>", "   show keys" },
+      ["<leader>fr"] = { "<cmd> Telescope resume <CR>", "   resume picker" },
 
       -- git
-      ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "   git commits" },
-      ["<leader>gt"] = { "<cmd> Telescope git_status <CR>", "  git status" },
-      ["<leader>gb"] = { "<cmd> Telescope git_branches <CR>", "  git status" },
+      ["<leader>gc"] = { "<cmd> Telescope git_commits <CR>", "  git commits" },
+      ["<leader>gs"] = { "<cmd> Telescope git_status <CR>", "  git status" },
+      ["<leader>gb"] = { "<cmd> Telescope git_branches <CR>", "  git branches" },
 
       -- pick a hidden term
       ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "   pick hidden term" },
