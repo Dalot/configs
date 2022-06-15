@@ -1,4 +1,7 @@
 # Configs
+These configs include [nvchad](https://github.com/NvChad/NvChad)
+
+The folder `nvim/custom` is precisely the custom config for nvchad
 
 ### Install general packages 
 `sudo apt update && sudo apt install -y $(cat pkglist.txt | egrep -v "(^#.*|^$)")`
@@ -21,9 +24,13 @@ https://ohmyz.sh/#install
 ### Install neovim
 `https://github.com/neovim/neovim/wiki/Installing-Neovim#linux`
 
+### Install NvChad
+https://github.com/NvChad/NvChad
+
 ### Setup the config
-`mkdir ~/.config/nvim/ && cp nvim/init.vim ~/.config/nvim/init.vim`
-`nvim +'hi NormalFloat guibg=#1e222a' +PackerSync`
+`cp -r nvim/custom ~/.config/nvim/lua 
+`nvim`
+`PackerSync`
 
 ### Install Node
 https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04#option-3-installing-node-using-the-node-version-manager

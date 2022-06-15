@@ -9,25 +9,23 @@ M.ui = {
    theme = "jellybeans",
 }
 
-local userPlugins = require "custom.plugins"
-local pluginConfs = require "custom.plugins.configs"
+local override = require "custom.override"
 
 M.plugins = {
-  ["lukas-reineke/lsp-format.nvim"] = pluginConfs.lspformat,
 
-  override = {
-    ["nvim-treesitter/nvim-treesitter"] = pluginConfs.treesitter,
-  },
   options = {
     lspconfig = {
-      setup_lspconf = "custom.plugins.lspconfig",
+      setup_lspconf = require "custom.plugins.lspconfig",
     },
   },
 
-  user = userPlugins,
+  override = {
+    ["nvim-treesitter/nvim-treesitter"] = override.treesitter
+  },
+
+  user = require "custom.plugins"
 }
 
 M.mappings = require "custom.mappings"
-
 
 return M

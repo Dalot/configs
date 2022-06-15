@@ -1,19 +1,24 @@
 local M = {}
 
 M.nvimtree = {
-  mode_opts = { noremap = true }, -- this is completely optional
   n = {
     ["<C-b>"] = { "<cmd> NvimTreeToggle <CR>", "   toggle nvimtree" },
-    ["<C-e>"] = { "<cmd> NvimTreeFindFile <CR>", "   find nvimtree" },
   }
 }
 
+M.disabled = {
+  n = {
+      ["_>"] = ""
+    }
+}
+
 M.custom = {
-  mode_opts = { noremap = true },
 
   n = {
     ["<leader>w"] = {":w<CR>", "save file"},
     ["<C-w>>"] = {":30winc ><CR>", "increase size of vertical split"},
+    ["<leader>r0"] = {"cw<C-r>0<Esc>", "replace with the register 0"},
+    ["<leader>rp"] = {"\"_dwi<C-r>+<Esc>", "replace with the register +"}
   },
 
   v = {
@@ -88,12 +93,27 @@ M.lsp = {
 -- local find_files = function()
 --   require("telescope.builtin").find_files({})
 -- end
-
+-- local builtin = require('telescope.builtin')
 M.telescope = {
    n = {
       -- find
-      -- ["<leader>ff"] = {find_files},
-      ["<leader>ff"] = {"<cmd>lua require'telescope.builtin'.find_files({ find_command={'rg', '--files', '--hidden', '-g', '!.git' , '-g', '!vendor'}})  <CR>", "  find files" },
+      -- ["<leader>ff"] = {
+      --    function()
+      --       builtin.find_files({
+      --         find_command = {
+      --           'rg',
+      --           '--files',
+      --           '--hidden',
+      --           '-g',
+      --           '!.git',
+      --           '-g',
+      --           '!vendor',
+      --         }
+      --       })
+      --    end,
+      --    "  find files",
+      -- },
+      ["<leader>ff"] = {":Telescope find_files find_command={'rg','--ignore','--hidden','--files','-g','!vendor','-g','!.git'}<CR>", "  find files" },
       ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "  find all" },
       ["<leader>fw"] = { "<cmd> Telescope live_grep glob_pattern=!vendor/* <CR>", "   live grep exclude vendor" },
       ["<leader>fq"] = { "<cmd> Telescope live_grep <CR>", "   live grep include vendor" },
