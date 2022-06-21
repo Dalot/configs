@@ -6,4 +6,10 @@ return {
       end,
    },
   ["rhysd/vim-clang-format"] = {},
+  ["fatih/vim-go"] = {
+    config = function()
+      require "custom.plugins.vimgo"
+    end,
+  },
+  -- ["buoto/gotests-vim"] = {},
 }

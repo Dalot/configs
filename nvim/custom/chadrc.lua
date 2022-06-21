@@ -23,6 +23,11 @@ M.plugins = {
     ["nvim-treesitter/nvim-treesitter"] = override.treesitter
   },
 
+  remove = {
+    -- "windwp/nvim-autopairs",
+    -- "fatih/go-vim",
+  },
+
   user = require "custom.plugins"
 }
 
