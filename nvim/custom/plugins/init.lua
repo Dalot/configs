@@ -11,5 +11,5 @@ return {
       require "custom.plugins.vimgo"
     end,
   },
-  -- ["buoto/gotests-vim"] = {},
+  ["buoto/gotests-vim"] = {},
 }
