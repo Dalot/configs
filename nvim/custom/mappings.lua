@@ -36,6 +36,12 @@ M.lsp = {
          end,
          "   lsp definition",
       },
+      ["gi"] = {
+         function()
+            vim.lsp.buf.implementation()
+         end,
+         "   lsp definition",
+      },
       ["<leader>s"] = {
          function()
             vim.lsp.buf.hover()
@@ -122,6 +128,9 @@ M.telescope = {
       ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "   find oldfiles" },
       ["<leader>tk"] = { "<cmd> Telescope keymaps <CR>", "   show keys" },
       ["<leader>fr"] = { "<cmd> Telescope resume <CR>", "   resume picker" },
+      ["<C-p>"] = { "<cmd> Telescope oldfiles <CR>", "   old files" },
+      ["<leader>fs"] = { "<cmd> Telescope lsp_dynamic_workspace_symbols <CR>", "  find workspace symbols" },
+      ["<leader>fm"] = { "<cmd> Telescope lsp_dynamic_workspace_symbols symbols={'method'} <CR>", "  find workspace symbols" },
 
       -- git
       ["<leader>gc"] = { "<cmd> Telescope git_commits <CR>", "  git commits" },
