@@ -9,6 +9,12 @@ M.treesitter = {
     "javascript",
     "typescript",
     "proto",
+    "rust",
+    "toml",
+    "markdown",
+    "make",
+    "yaml",
+    "json",
   },
 }
 

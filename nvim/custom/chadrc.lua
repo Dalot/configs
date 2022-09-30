@@ -21,24 +21,18 @@ M.plugins = {
 
   override = {
     ["nvim-treesitter/nvim-treesitter"] = override.treesitter,
+
+    -- Portable package manager for Neovim that runs everywhere Neovim runs.
+    -- Easily install and manage LSP servers, DAP servers, linters, and formatters.
     ["williamboman/mason.nvim"] = {
       ensure_installed = {
-        -- lua stuff
         "lua-language-server",
         "stylua",
 
-        -- web dev
-        -- "css-lsp",
-        -- "html-lsp",
-        -- "typescript-language-server",
-        -- "deno",
-        -- "emmet-ls",
-        -- "json-lsp",
+        "rust-analyzer",
 
-        -- backend
         "gopls",
 
-        -- shell
         "shfmt",
         "shellcheck",
       },

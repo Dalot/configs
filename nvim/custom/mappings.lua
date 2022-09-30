@@ -30,6 +30,9 @@ M.custom = {
 
 M.lsp = {
   n = {
+        -- save
+    ["<C-s>"] = { "<cmd> w <CR> <cmd>lua vim.lsp.buf.formatting()<CR>", "save file" },
+
       ["gd"] = {
          function()
             vim.lsp.buf.definition()

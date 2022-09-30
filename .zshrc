@@ -110,4 +110,4 @@ export NVM_DIR="$HOME/.nvm"
 alias mux=tmuxinator
 export EDITOR=vim
 
-export PATH="$PATH:$HOME/go/bin:/usr/local/go/bin"
+export PATH="$PATH:$HOME/go/bin:/usr/local/go/bin:$HOME/.local/bin"
