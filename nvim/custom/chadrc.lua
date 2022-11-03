@@ -6,25 +6,35 @@ local M = {}
 -- example of changing theme:
 
 M.ui = {
-   theme = "jellybeans",
+  theme = "jellybeans",
 }
-
-local override = require "custom.override"
 
 M.plugins = {
 
-  options = {
-    lspconfig = {
-      setup_lspconf = require "custom.plugins.lspconfig",
+  ["nvim-treesitter/nvim-treesitter"] = {
+    override_options = {
+      ensure_installed = {
+        "html",
+        "css",
+        "go",
+        "vim",
+        "javascript",
+        "typescript",
+        "proto",
+        "rust",
+        "toml",
+        "markdown",
+        "make",
+        "yaml",
+        "json",
+      },
     },
   },
 
-  override = {
-    ["nvim-treesitter/nvim-treesitter"] = override.treesitter,
-
-    -- Portable package manager for Neovim that runs everywhere Neovim runs.
-    -- Easily install and manage LSP servers, DAP servers, linters, and formatters.
-    ["williamboman/mason.nvim"] = {
+  -- Portable package manager for Neovim that runs everywhere Neovim runs.
+  -- Easily install and manage LSP servers, DAP servers, linters, and formatters.
+  ["williamboman/mason.nvim"] = {
+    override_options = {
       ensure_installed = {
         "lua-language-server",
         "stylua",
@@ -39,12 +49,7 @@ M.plugins = {
     },
   },
 
-  remove = {
-    -- "windwp/nvim-autopairs",
-    -- "fatih/go-vim",
-  },
-
-  user = require "custom.plugins"
+  user = require "custom.plugins",
 }
 
 M.mappings = require "custom.mappings"
